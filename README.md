@@ -28,6 +28,6 @@ The influence and state data is driven from tracker_data.json
 
 ### embedding
 
-Currently, the map is simply appended to the body. However, it is trivial to change this to a particular named `<div>` tag in the HTML, by replacing `var svg = d3.select("body").append("svg")` with `var canvas = d3.select("#chart").append("svg:svg")` where #chart refers to the ID of the div tag.
+Currently, the map is simply appended to the body. However, it is trivial to change this to a particular named `<div>` tag in the HTML, by replacing `var svg = d3.select("body").append("svg")` with `var svg = d3.select("#chart").append("svg")` where #chart refers to the ID of the div tag.
     
     
