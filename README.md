@@ -10,10 +10,10 @@ This code provides visualizations of multi-systems factions in Elite:Dangerous, 
 ![control](/screenshots/control.PNG)
 
 2. Population Map: what is the size of the population for these systems (using a logarithmic scale)
-![population](/screenshots/population.PNG)
+![population](/screenshots/population_logscale.PNG)
 
 3. Influence Map: what is the current influence for the selected faction in each system (red to green to light green) (ruling = green border, non-ruling = red)
-![influence](/screenshot/influence.PNG)
+![influence](/screenshots/influence.PNG)
 
 4. Active States Map: shows all active states, other than None, for all factions in the system. Selected faction state will be shown in the main circle
 ![states](/screenshots/states.PNG)
