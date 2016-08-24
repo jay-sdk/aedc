@@ -1,0 +1,652 @@
+{
+    "name": "system collection",
+    "systems": [
+        {"name": "Wolf 406",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 59.5,
+              "state": "None"
+             },
+             {"faction": "Ross 129 Liberals",
+              "ruler": "N",
+              "inf": 9.9,
+              "state": "Civil Unrest"
+             },
+             {"faction": "Marquis du Uram",
+              "ruler": "N",
+              "inf": 5.6,
+              "state": "Boom"
+             },
+             {"faction": "Cupinook Blue Travel Company",
+              "ruler": "N",
+              "inf": 5.1,
+              "state": "Boom"
+             },
+             {"faction": "Wolf 406 Flag",
+              "ruler": "N",
+              "inf": 4.7,
+              "state": "Boom"
+             },
+             {"faction": "LTT 4772 Alliance Mandate",
+              "ruler": "N",
+              "inf": 4.1,
+              "state": "None"
+             },
+             {"faction": "New Wolf 406 Values Party",
+              "ruler": "N",
+              "inf": 4.0,
+              "state": "None"
+             },
+             {"faction": "Matres Gold General Systems",
+              "ruler": "N",
+              "inf": 4.0,
+              "state": "None"
+             },
+             {"faction": "Dagaz Legal Commodities",
+              "ruler": "N",
+              "inf": 3.1,
+              "state": "None"
+             }
+         ] 
+        },
+        {"name": "Naitis",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 70.6,
+              "state": "None"
+             },
+             {"faction": "Naitis Values Party",
+              "ruler": "N",
+              "inf": 12.3,
+              "state": "Boom"
+             },
+             {"faction": "Naitis General Holdings",
+              "ruler": "N",
+              "inf": 7.8,
+              "state": "None"
+             },
+             {"faction": "Naitis Alliance Bridge",
+              "ruler": "N",
+              "inf": 7.8,
+              "state": "Boom"
+             },
+             {"faction": "Naitis Purple Boys",
+              "ruler": "N",
+              "inf": 1.5,
+              "state": "Boom"
+             }
+         ]
+        },
+        {"name": "Utar",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 64.6,
+              "state": "None"
+             },
+             {"faction": "People's Utar Revolutionary Party",
+              "ruler": "N",
+              "inf": 18.5,
+              "state": "None"
+             },
+             {"faction": "Monarchy of Wolf 440",
+              "ruler": "N",
+              "inf": 7.3,
+              "state": "Expansion"
+             },
+             {"faction": "Jongsaki Co",
+              "ruler": "N",
+              "inf": 3.9,
+              "state": "Boom"
+             },
+             {"faction": "Utar Electronics Incorporated",
+              "ruler": "N",
+              "inf": 2.2,
+              "state": "None"
+             },
+             {"faction": "United Utar Nationalists",
+              "ruler": "N",
+              "inf": 2.0,
+              "state": "None"
+             },
+             {"faction": "Utar Silver Raiders",
+              "ruler": "N",
+              "inf": 1.5,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "LTT 13232",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 53.9,
+              "state": "None"
+             },
+             {"faction": "Wolf 363 Bridge Inc",
+              "ruler": "N",
+              "inf": 16.6,
+              "state": "Boom"
+             },
+             {"faction": "LTT 13232 Travel Corp.",
+              "ruler": "N",
+              "inf": 11.2,
+              "state": "Civil War"
+             },
+             {"faction": "Co-op of LTT 13232",
+              "ruler": "N",
+              "inf": 8.3,
+              "state": "Civil War"
+             },
+             {"faction": "Alliance of LTT 13232",
+              "ruler": "N",
+              "inf": 7.5,
+              "state": "Boom"
+             },
+             {"faction": "LTT 13232 Cartel",
+              "ruler": "N",
+              "inf": 2.5,
+              "state": "Boom"
+             }
+         ]
+        },
+        {"name": "17 Virginis",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 79.9,
+              "state": "None"
+             },
+             {"faction": "17 Virginis Commodities",
+              "ruler": "N",
+              "inf": 7.6,
+              "state": "Civil War"
+             },
+             {"faction": "17 Virginis Monarchy",
+              "ruler": "N",
+              "inf": 4.8,
+              "state": "Civil War"
+             },
+             {"faction": "17 Virginis Rats",
+              "ruler": "N",
+              "inf": 4.3,
+              "state": "None"
+             },
+             {"faction": "17 Virginis Coalition",
+              "ruler": "N",
+              "inf": 3.4,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "38 Virginis",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 51.8,
+              "state": "None"
+             },
+             {"faction": "38 Virginis Dynamic Commodities",
+              "ruler": "N",
+              "inf": 30.2,
+              "state": "None"
+             },
+             {"faction": "Delta Squadron",
+              "ruler": "N",
+              "inf": 8.4,
+              "state": "None"
+             },
+             {"faction": "38 Virginis Democrats",
+              "ruler": "N",
+              "inf": 6.5,
+              "state": "None"
+             },
+             {"faction": "38 Virginis Defense Party",
+              "ruler": "N",
+              "inf": 2.1,
+              "state": "None"
+             },
+             {"faction": "Clan of 38 Virginis",
+              "ruler": "N",
+              "inf": 1.0,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "LTT 13380",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 68.0,
+              "state": "None"
+             },
+             {"faction": "LTT 13380 Jet State Partners",
+              "ruler": "N",
+              "inf": 17.8,
+              "state": "Boom"
+             },
+             {"faction": "Regulatory State of LTT 13380",
+              "ruler": "N",
+              "inf": 6.6,
+              "state": "None"
+             },
+             {"faction": "LTT 13380 Flag",
+              "ruler": "N",
+              "inf": 4.6,
+              "state": "None"
+             },
+             {"faction": "Progressive Party of LTT 13380",
+              "ruler": "N",
+              "inf": 3.0,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Marsuk",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 64.5,
+              "state": "None"
+             },
+             {"faction": "Church of Marsuk",
+              "ruler": "N",
+              "inf": 14.2,
+              "state": "None"
+             },
+             {"faction": "Marsuk Transport Ltd",
+              "ruler": "N",
+              "inf": 9.5,
+              "state": "None"
+             },
+             {"faction": "Jongsaki Co",
+              "ruler": "N",
+              "inf": 7.9,
+              "state": "None"
+             },
+             {"faction": "Nagybold Major Holdings",
+              "ruler": "N",
+              "inf": 3.9,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "IV Comae Berenices",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 58.3,
+              "state": "None"
+             },
+             {"faction": "Lenore Legal Exchange",
+              "ruler": "N",
+              "inf": 13.7,
+              "state": "None"
+             },
+             {"faction": "Independent IV Comae Berenices Labour",
+              "ruler": "N",
+              "inf": 8.3,
+              "state": "Boom"
+             },
+             {"faction": "Wolf 1438 Transport Industries",
+              "ruler": "N",
+              "inf": 8.2,
+              "state": "None"
+             },
+             {"faction": "IV Comae Berenices Alliance Group",
+              "ruler": "N",
+              "inf": 6.6,
+              "state": "Boom"
+             },
+             {"faction": "IV Comae Berenices Purple Creative",
+              "ruler": "N",
+              "inf": 3.7,
+              "state": "None"
+             },
+             {"faction": "IV Comae Berenices Blue Raiders",
+              "ruler": "N",
+              "inf": 1.2,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Puskabui",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 59.1,
+              "state": "None"
+             },
+             {"faction": "LHS 2412 Incorporated",
+              "ruler": "N",
+              "inf": 23.5,
+              "state": "None"
+             },
+             {"faction": "Puskabui Services",
+              "ruler": "N",
+              "inf": 13.7,
+              "state": "Famine"
+             },
+             {"faction": "Leaders of Puskabui",
+              "ruler": "N",
+              "inf": 2.2,
+              "state": "Lockdown"
+             },
+             {"faction": "Puskabui Union Party",
+              "ruler": "N",
+              "inf": 1.5,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Dagaz",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 63.4,
+              "state": "None"
+             },
+             {"faction": "Republic Party of Dagaz",
+              "ruler": "N",
+              "inf": 25.1,
+              "state": "None"
+             },
+             {"faction": "Revolutionary Wolf 1487 Confederacy",
+              "ruler": "N",
+              "inf": 3.5,
+              "state": "None"
+             },
+             {"faction": "Dagaz Legal Commodities",
+              "ruler": "N",
+              "inf": 2.9,
+              "state": "Civil War"
+             },
+             {"faction": "Gold Travel Interstellar",
+              "ruler": "N",
+              "inf": 2.8,
+              "state": "None"
+             },
+             {"faction": "Nationalists of Dagaz",
+              "ruler": "N",
+              "inf": 1.3,
+              "state": "Civil War"
+             },
+             {"faction": "Dagaz Cartel",
+              "ruler": "N",
+              "inf": 1.0,
+              "state": "Boom"
+             }
+         ]
+        },
+        {"name": "Uram",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "N",
+              "inf": 40.9,
+              "state": "None"
+             },
+             {"faction": "Movement for Uram Confederation",
+              "ruler": "Y",
+              "inf": 39.7,
+              "state": "None"
+             },
+             {"faction": "Thraskias Crimson United",
+              "ruler": "N",
+              "inf": 8.1,
+              "state": "Boom"
+             },
+             {"faction": "Uram Group",
+              "ruler": "N",
+              "inf": 3.4,
+              "state": "None"
+             },
+             {"faction": "LP 673-42 Holdings",
+              "ruler": "N",
+              "inf": 2.8,
+              "state": "None"
+             },
+             {"faction": "Uram Central Corporation",
+              "ruler": "N",
+              "inf": 2.7,
+              "state": "None"
+             },
+             {"faction": "Uram Jet Pirates",
+              "ruler": "N",
+              "inf": 2.4,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Ross 129",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "N",
+              "inf": 44.5,
+              "state": "None"
+             },
+             {"faction": "Ross 129 Liberals",
+              "ruler": "Y",
+              "inf": 43.1,
+              "state": "Civil Unrest"
+             },
+             {"faction": "Ross 129 Order",
+              "ruler": "N",
+              "inf": 4.5,
+              "state": "Boom"
+             },
+             {"faction": "Ross 129 & Co",
+              "ruler": "N",
+              "inf": 3.2,
+              "state": "War"
+             },
+             {"faction": "Freedom Party of LTT 4376",
+              "ruler": "N",
+              "inf": 2.7,
+              "state": "War"
+             },
+             {"faction": "League of Ross 129 Conservatives",
+              "ruler": "N",
+              "inf": 1.0,
+              "state": "Lockdown"
+             },
+             {"faction": "Ross 129 Silver Council",
+              "ruler": "N",
+              "inf": 2.4,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Cupinook",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "N",
+              "inf": 39.8,
+              "state": "None"
+             },
+             {"faction": "Cupinook Pro-Alliance Union",
+              "ruler": "Y",
+              "inf": 40.7,
+              "state": "Boom"
+             },
+             {"faction": "Cupinook Industry",
+              "ruler": "N",
+              "inf": 16.6,
+              "state": "Boom"
+             },
+             {"faction": "Law Party of Cupinook",
+              "ruler": "N",
+              "inf": 1.5,
+              "state": "Boom"
+             },
+             {"faction": "Social Cupinook Free",
+              "ruler": "N",
+              "inf": 1.4,
+              "state": "Boom"
+             }
+         ]
+        },
+        {"name": "LTT 13415",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "N",
+              "inf": 29.0,
+              "state": "None"
+             },
+             {"faction": "LTT 13415 Vision Systems",
+              "ruler": "Y",
+              "inf": 44.9,
+              "state": "None"
+             },
+             {"faction": "Alliance of LTT 13415",
+              "ruler": "N",
+              "inf": 9.7,
+              "state": "Civil War"
+             },
+             {"faction": "LTT 13415 Inc",
+              "ruler": "N",
+              "inf": 8.5,
+              "state": "Civil War"
+             },
+             {"faction": "LTT 13415 Nationalists",
+              "ruler": "N",
+              "inf": 6.8,
+              "state": "None"
+             },
+             {"faction": "LTT 13415 Blue Posse",
+              "ruler": "N",
+              "inf": 1.1,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Lenore",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "N",
+              "inf": 18.7,
+              "state": "None"
+             },
+             {"faction": "Lenore Legal Exchange",
+              "ruler": "Y",
+              "inf": 66.7,
+              "state": "Boom"
+             },
+             {"faction": "Law Party of Lenore",
+              "ruler": "N",
+              "inf": 8.7,
+              "state": "Lockdown"
+             },
+             {"faction": "Revolutionary Lenore Independents",
+              "ruler": "N",
+              "inf": 4.7,
+              "state": "None"
+             },
+             {"faction": "Lenore Blue Dragons",
+              "ruler": "N",
+              "inf": 1.2,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Alicarl",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "Y",
+              "inf": 41.3,
+              "state": "None"
+             },
+             {"faction": "Alicarl Defense Force",
+              "ruler": "N",
+              "inf": 22.5,
+              "state": "None"
+             },
+             {"faction": "Alicarl Liberals",
+              "ruler": "N",
+              "inf": 19.2,
+              "state": "Boom"
+             },
+             {"faction": "Alicarl Solutions",
+              "ruler": "N",
+              "inf": 7.4,
+              "state": "None"
+             },
+             {"faction": "Alicarl Major Corp.",
+              "ruler": "N",
+              "inf": 6.3,
+              "state": "None"
+             },
+             {"faction": "Alicarl Blue Brothers",
+              "ruler": "N",
+              "inf": 3.3,
+              "state": "None"
+             }
+         ]
+        },
+        {"name": "Rusalki",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "N",
+              "inf": 22.3,
+              "state": "None"
+             },
+             {"faction": "Rusalki Silver Council",
+              "ruler": "Y",
+              "inf": 46.3,
+              "state": "None"
+             },
+             {"faction": "Progressive Party of LTT 13380",
+              "ruler": "N",
+              "inf": 14.5,
+              "state": "None"
+             },
+             {"faction": "Rusalki Coalition",
+              "ruler": "N",
+              "inf": 8.1,
+              "state": "None"
+             },
+             {"faction": "LTT 13415 Vision Systems",
+              "ruler": "N",
+              "inf": 5.6,
+              "state": "None"
+             },
+             {"faction": "Rusalki Industries",
+              "ruler": "N",
+              "inf": 3.3,
+              "state": "Outbreak"
+             }
+         ]
+        },
+        {"name": "Malatia",
+         "factions": [
+             {"faction": "Wolf 406 Transport & Co",
+              "ruler": "N",
+              "inf": 27.3,
+              "state": "None"
+             },
+             {"faction": "Noblemen of Malatia",
+              "ruler": "Y",
+              "inf": 50.6,
+              "state": "None"
+             },
+             {"faction": "Malatia Electronics Holdings",
+              "ruler": "N",
+              "inf": 10.0,
+              "state": "Boom"
+             },
+             {"faction": "Untuathit Travel Solution",
+              "ruler": "N",
+              "inf": 8.6,
+              "state": "Boom"
+             },
+             {"faction": "Partnership of Malatia",
+              "ruler": "N",
+              "inf": 3.5,
+              "state": "None"
+             }
+         ]
+        }
+        
+    ]
+}

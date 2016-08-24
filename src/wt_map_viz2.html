@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Wolf 406 Transport & Co</title>
+<style>
+body {
+    font: 11px sans-serif;
+    fill: #000020;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="wt_map_viz2.js"></script>
+    
+<div id="control_button">
+    <input type="button" value="Control" onclick="updateMap(MAP_DEFAULT);" />
+</div>
+<div id="population_button">
+    <input type="button" value="Population" onclick="updateMap(MAP_POPULATION);" />
+</div>
+<div id="influence_button">
+    <input type="button" value="Influence" onclick="updateMap(MAP_INFLUENCE);" />
+</div>
+<div id="states_button">
+    <input type="button" value="States" onclick="updateMap(MAP_STATES);" />
+</div>
+<div id="danger_button">
+    <input type="button" value="Dangerspots" onclick="updateMap(MAP_DANGERSPOT);" />
+</div>
+
+</body>
+</html>
