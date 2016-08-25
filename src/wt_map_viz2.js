@@ -21,9 +21,14 @@ var selectedFaction = "Wolf 406 Transport & Co";
 var svg = d3.select("body").append("svg")
     .attr("id", "wt_map")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("height", height + margin.top + margin.bottom);
+
+//add a placeholder for the legend: content will change from view to view
+svg.append("g")
+    .attr("class", "legend");
+
+svg = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
 var x_scale = d3.scale.linear()
@@ -142,7 +147,10 @@ function updateMap(view){
     svg.selectAll(".population")
         .style("opacity", 0.0);
     
-    
+    var legend = svg.selectAll(".legend");
+    legend.selectAll("*").remove();
+    var legend = legend.append("g")
+        .attr("transform", "translate(50,20)");
     
     svg = svg.selectAll(".system")
     d3.json("tracker_data.json", function(error, mapdata) {
@@ -157,6 +165,36 @@ function updateMap(view){
                         .style("stroke", "#0E6D74")
                         .style("fill", function(d){ 
                             return (selectedFactionIsRuler(d.factions, selectedFaction) === "Y" ? "#0E6D74" :         "white"); });
+                    
+                    //legend
+                    legend.append("circle")
+                        .attr("r", "9")
+                        .style("stroke-width", "3")
+                        .style("stroke", "#0E6D74")
+                        .style("fill", "#0E6D74");
+                    
+                    legend.append("text")
+                        .attr("x", 20)
+                        .attr("dy", "0.4em")
+                        .attr("text-anchor", "start")
+                        .text("Controlled")
+                        .style("font-size", "10px");
+                    
+                    legend.append("circle")
+                        .attr("cy", 30)
+                        .attr("r", "9")
+                        .style("stroke-width", "3")
+                        .style("stroke", "#0E6D74")
+                        .style("fill", "white");
+                    
+                    legend.append("text")
+                        .attr("x", 20)
+                        .attr("y", 34)
+                        .attr("text-anchor", "start")
+                        .text("Expanded")
+                        .style("font-size", "10px");
+                    
+                    
                     break;
                 // influence
                 case MAP_INFLUENCE:
@@ -165,6 +203,52 @@ function updateMap(view){
                         .style("stroke", function(d){ 
                             return (selectedFactionIsRuler(d.factions, selectedFaction) === "Y" ? "green" : "maroon"); })
                         .style("fill", function(d){ return inf_scale(factionInfluence(d.factions, selectedFaction)); });
+                    
+                    for(i=0; i< 21; i++){
+                        legend.append("rect")
+                            .attr("y", i * 3)
+                            .attr("height", 3)
+                            .attr("width", 10)
+                            .style("fill", inf_scale(i * 5));
+                    }
+                    for(i = 0; i < 3; i++){
+                        legend.append("text")
+                            .attr("x", 15)
+                            .attr("y", (i * 30) + 4)
+                            .attr("text-anchor", "start")
+                            .text((i * 50) + "%" )
+                            .style("font-size", "10px");
+                    }
+                    legend.append("circle")
+                        .attr("cy", 85)
+                        .attr("r", "9")
+                        .style("stroke-width", "3")
+                        .style("stroke", "green")
+                        .style("fill", "white");
+                    
+                    legend.append("text")
+                        .attr("x", 15)
+                        .attr("y", 87)
+                        .attr("text-anchor", "start")
+                        .text("Controlled")
+                        .style("font-size", "10px");
+                    
+                    legend.append("circle")
+                        .attr("cy", 110)
+                        .attr("r", "9")
+                        .style("stroke-width", "3")
+                        .style("stroke", "maroon")
+                        .style("fill", "white");
+                    
+                    legend.append("text")
+                        .attr("dx", 15)
+                        .attr("y", 112)
+                        .attr("text-anchor", "start")
+                        .text("Expanded")
+                        .style("font-size", "10px");
+                    
+                    
+                    
                     break;
                 // states
                 case MAP_STATES:
@@ -174,6 +258,28 @@ function updateMap(view){
                     svg.select(".star")
                         .style("stroke", "#E0E0E0")
                         .style("fill", function(d){ return selectedFactionStateColor(d.factions, selectedFaction); });
+                    
+                    
+                    for(var i = 0; i < stateorder.length; i++){
+                        legend.append("rect")
+                            .attr("y", i * 12)
+                            .attr("width",10)
+                            .attr("height", 7)
+                            .style("fill", statecolors[stateorder[i]]);
+                        
+                        legend.append("text")
+                            .attr("x", "15")
+                            .attr("y", (i * 12) +6)
+                            .attr("text-anchor", "start")
+                            .text(stateorder[i])
+                            .style("font-size", "10px");
+                            
+                    }
+                    
+                    
+                    
+                    
+                    
                     break;
                     
                 case MAP_DANGERSPOT:
@@ -181,6 +287,50 @@ function updateMap(view){
                         .style("stroke", function(d){ 
                             return (selectedFactionIsRuler(d.factions, selectedFaction) === "Y" ? "green" : "maroon"); })
                         .style("fill", function(d){ return dangerscale(calculateMargin(d.factions, selectedFaction)); });
+                    
+                    for(i=0; i< 21; i++){
+                        legend.append("rect")
+                            .attr("y", i * 3)
+                            .attr("height", 3)
+                            .attr("width", 10)
+                            .style("fill", dangerscale(i * 2.5));
+                    }
+                    for(i = 0; i < 3; i++){
+                        legend.append("text")
+                            .attr("x", 15)
+                            .attr("y", (i * 30) + 4)
+                            .attr("text-anchor", "start")
+                            .text((i * 25) + "%" )
+                            .style("font-size", "10px");
+                    }
+                    legend.append("circle")
+                        .attr("cy", 85)
+                        .attr("r", "9")
+                        .style("stroke-width", "3")
+                        .style("stroke", "green")
+                        .style("fill", "white");
+                    
+                    legend.append("text")
+                        .attr("x", 15)
+                        .attr("y", 87)
+                        .attr("text-anchor", "start")
+                        .text("Controlled")
+                        .style("font-size", "10px");
+                    
+                    legend.append("circle")
+                        .attr("cy", 110)
+                        .attr("r", "9")
+                        .style("stroke-width", "3")
+                        .style("stroke", "maroon")
+                        .style("fill", "white");
+                    
+                    legend.append("text")
+                        .attr("dx", 15)
+                        .attr("y", 112)
+                        .attr("text-anchor", "start")
+                        .text("Expanded")
+                        .style("font-size", "10px");
+                    
                     break;
                     
                 case MAP_POPULATION:
@@ -192,6 +342,47 @@ function updateMap(view){
                         .style("stroke", "#0E6D74")
                         .style("fill", function(d){ 
                             return (selectedFactionIsRuler(d.factions, selectedFaction) === "Y" ? "#0E6D74" :         "white"); });
+                    
+                    //legend
+                    legend.append("circle")
+                        .attr("r", pop_logscale(1000))
+                        .style("stroke", "#0E6D74")
+                        .style("fill", "#0E6D74")
+                        .style("opacity", 0.4);
+                    
+                    legend.append("text")
+                        .attr("y", 2)
+                        .attr("text-anchor", "middle")
+                        .text("1000")
+                        .style("font-size", "10px");
+                    
+                    legend.append("circle")
+                        .attr("cy", 40)
+                        .attr("r", pop_logscale(100000))
+                        .style("stroke", "#0E6D74")
+                        .style("fill", "#0E6D74")
+                        .style("opacity", 0.4);
+                    
+                    legend.append("text")
+                        .attr("y", 42)
+                        .attr("text-anchor", "middle")
+                        .text("100,000")
+                        .style("font-size", "10px");
+                    
+                    legend.append("circle")
+                        .attr("cy", 115)
+                        .attr("r", pop_logscale(10000000))
+                        .style("stroke", "#0E6D74")
+                        .style("fill", "#0E6D74")
+                        .style("opacity", 0.4);
+                    
+                    legend.append("text")
+                        .attr("y", 117)
+                        .attr("text-anchor", "middle")
+                        .text("10,000,000")
+                        .style("font-size", "10px");
+                    
+                    
                     break;
                     
             }
