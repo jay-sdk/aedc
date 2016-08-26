@@ -2,7 +2,7 @@
 
 ## Faction Mapping Project
 
-This code provides visualizations of multi-systems factions in Elite:Dangerous, given a list of systems with coordinates, as well as population size; mixed with more frequently updating influence and state data. This code does not handle the retrieval of this data and uses sample files.
+This code provides visualizations of multi-systems factions in Elite:Dangerous, given a list of systems with coordinates, population size; influence and state data. This code uses sample file, but has the code for URL-based data retrieval included (see below)
 
 ### Examples
 
@@ -26,13 +26,31 @@ This code provides visualizations of multi-systems factions in Elite:Dangerous, 
 
 ![dangerspots](/screenshots/dangerspots.PNG)
 
-### data files
-The system list and population is driven off of wt_map.csv, containing system name, coordinates (only x and z are used) and population (additional info included in this file is not used).
+### data file
+Currently, the code uses a sample file (`tracker_data.json') but the code is supplied to handle live requests:
 
-The influence and state data is driven from tracker_data.json
+`//base url: update this to correct path
+var t_baseURL = ""; // http://aedc.etc.
+//default; update from tracker faction dropdown onChange
+var selectedFaction = "Wolf 406 Transport & Co";
+...
+function createMap(selectedFaction){
+    d3.json("tracker_data.json", function(error, mapdata) {
+    //build the URL to the right faction: base URL + faction, with white spaces replaced with '+'
+    //d3.json(t_baseURL + selectedFaction.replace(/ /g, "+"), function(error, mapdata) {
+	...'
+	
+Comment the current d3.json line, and uncomment the last one here. Note that this assumes a baseURL that includes a trailing /. Faction name has whitespace escaped; replace with URLencoding if that causes problems with & chars (but it shouldn't)
+
 
 ### embedding
 
-Currently, the map is simply appended to the body. However, it is trivial to change this to a particular named `<div>` tag in the HTML, by replacing `var svg = d3.select("body").append("svg")` with `var svg = d3.select("#chart").append("svg")` where #chart refers to the ID of the div tag.
+The chart is attached to a <div> tag in the HTML. There is no real dependency on the HTML file. To embed this chart into an existing HTML page, include like so:
+
+'<div id="map" />
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="wt_map_viz2.js"></script>'
+
+The faction selection is driven off of a select box. This should have an ID of `js_faction`. The code appends an onChange event to this to make the call to the server backend.
     
     
