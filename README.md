@@ -53,7 +53,7 @@ The chart is attached to a <div> tag in the HTML. There is no real dependency on
 <div id="map" />
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="wt_map_viz2.js"></script>
-<code>
+</code>
 
 The faction selection is driven off of a select box. This should have an ID of `js_faction`. The code appends an onChange event to this to make the call to the server backend.
     
