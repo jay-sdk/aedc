@@ -29,7 +29,8 @@ This code provides visualizations of multi-systems factions in Elite:Dangerous, 
 ### data file
 Currently, the code uses a sample file (`tracker_data.json') but the code is supplied to handle live requests:
 
-```//base url: update this to correct path
+```javascript
+//base url: update this to correct path
 var t_baseURL = ""; // http://aedc.etc.
 //default; update from tracker faction dropdown onChange
 var selectedFaction = "Wolf 406 Transport & Co";
