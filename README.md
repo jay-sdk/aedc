@@ -39,7 +39,8 @@ function createMap(selectedFaction){
     d3.json("tracker_data.json", function(error, mapdata) {
     //build the URL to the right faction: base URL + faction, with white spaces replaced with '+'
     //d3.json(t_baseURL + selectedFaction.replace(/ /g, "+"), function(error, mapdata) {
-	...```
+	...
+```
 	
 Comment the current d3.json line, and uncomment the last one here. Note that this assumes a baseURL that includes a trailing /. Faction name has whitespace escaped; replace with URLencoding if that causes problems with & chars (but it shouldn't)
 
