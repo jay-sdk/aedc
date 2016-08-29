@@ -2,6 +2,9 @@
     "name": "system collection",
     "systems": [
         {"name": "Wolf 406",
+         "x": 41.0625,
+         "z": 8.75,
+         "population": 7152409,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -51,6 +54,9 @@
          ] 
         },
         {"name": "Naitis",
+         "x": 39.9375,
+         "z": 21.875,
+         "population": 5440946,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -80,6 +86,9 @@
          ]
         },
         {"name": "Utar",
+         "x": 37.0625,
+         "z": 20.71875,
+         "population": 5148568,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -119,6 +128,9 @@
          ]
         },
         {"name": "LTT 13232",
+         "x": 46.625,
+         "z": -1.125,
+         "population": 22993,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -153,6 +165,9 @@
          ]
         },
         {"name": "17 Virginis",
+         "x": 36.625,
+         "z": 10.4375,
+         "population": 29334,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -182,6 +197,9 @@
          ]
         },
         {"name": "38 Virginis",
+         "x": 44.96875,
+         "z": 31.53125,
+         "population": 11201336,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -216,6 +234,9 @@
          ]
         },
         {"name": "LTT 13380",
+         "x": 45.46875,
+         "z": 7.5625,
+         "population": 24562651,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -245,6 +266,9 @@
          ]
         },
         {"name": "Marsuk",
+         "x": 32.59375,
+         "z": 21.15625,
+         "population": 1048,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -274,6 +298,9 @@
          ]
         },
         {"name": "IV Comae Berenices",
+         "x": 21.6875,
+         "z": -3.53125,
+         "population": 11607325,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -313,6 +340,9 @@
          ]
         },
         {"name": "Puskabui",
+         "x": 54.125,
+         "z": 6.4375,
+         "population": 66735,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -342,6 +372,9 @@
          ]
         },
         {"name": "Dagaz",
+         "x": 30.15625,
+         "z": 15.3125,
+         "population": 109289,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -381,6 +414,9 @@
          ]
         },
         {"name": "Uram",
+         "x": 44.28125,
+         "z": -3.4375,
+         "population": 84103,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "N",
@@ -420,6 +456,9 @@
          ]
         },
         {"name": "Ross 129",
+         "x": 41.9375,
+         "z": 3.4375,
+         "population": 10113882,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "N",
@@ -459,6 +498,9 @@
          ]
         },
         {"name": "Cupinook",
+         "x": 44.28125,
+         "z": 17.125,
+         "population": 2519830882,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "N",
@@ -488,6 +530,9 @@
          ]
         },
         {"name": "LTT 13415",
+         "x": 36.375,
+         "z": 7.5,
+         "population": 1870489,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "N",
@@ -522,6 +567,9 @@
          ]
         },
         {"name": "Lenore",
+         "x": 19.9375,
+         "z": -0.375,
+         "population": 11544141,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "N",
@@ -551,6 +599,9 @@
          ]
         },
         {"name": "Alicarl",
+         "x": 33.28125,
+         "z": 3.03125,
+         "population": 2567534089,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "Y",
@@ -585,6 +636,9 @@
          ]
         },
         {"name": "Rusalki",
+         "x": 34.1875,
+         "z": 12.4375,
+         "population": 2880,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "N",
@@ -619,6 +673,9 @@
          ]
         },
         {"name": "Malatia",
+         "x": 34.875,
+         "z": 16.625,
+         "population": 81488,
          "factions": [
              {"faction": "Wolf 406 Transport & Co",
               "ruler": "N",
