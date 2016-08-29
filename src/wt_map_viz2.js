@@ -40,7 +40,7 @@ svg.append("rect")
 //add a placeholder for the legend: content will change from view to view
 svg.append("g")
     .attr("class", "legend")
-    .attr("transform", "translate(0," + margin.top/2 + ")");
+    .attr("transform", "translate(" + (width + margin.left + 20) + "," + (height/2 + margin.top) + ")");
 
 //buttons
 var buttons = svg.append("g")
@@ -435,18 +435,21 @@ function updateMap(view){
 
                 //legend
                 legend.append("circle")
+                    .attr("cx", 20)
                     .attr("r", pop_logscale(1000))
                     .style("stroke", "#0E6D74")
                     .style("fill", "#0E6D74")
                     .style("opacity", 0.4);
 
                 legend.append("text")
+                    .attr("x", 20)
                     .attr("y", 2)
                     .attr("text-anchor", "middle")
                     .text("1000")
                     .style("font-size", "10px");
 
                 legend.append("circle")
+                    .attr("cx", 20)
                     .attr("cy", 40)
                     .attr("r", pop_logscale(100000))
                     .style("stroke", "#0E6D74")
@@ -454,12 +457,14 @@ function updateMap(view){
                     .style("opacity", 0.4);
 
                 legend.append("text")
+                    .attr("x", 20)
                     .attr("y", 42)
                     .attr("text-anchor", "middle")
                     .text("100,000")
                     .style("font-size", "10px");
 
                 legend.append("circle")
+                    .attr("cx", 20)
                     .attr("cy", 115)
                     .attr("r", pop_logscale(10000000))
                     .style("stroke", "#0E6D74")
@@ -467,6 +472,7 @@ function updateMap(view){
                     .style("opacity", 0.4);
 
                 legend.append("text")
+                    .attr("x", 20)
                     .attr("y", 117)
                     .attr("text-anchor", "middle")
                     .text("10,000,000")
