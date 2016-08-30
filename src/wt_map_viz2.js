@@ -22,8 +22,9 @@ var t_baseURL = ""; // http://aedc.etc.
 var selectedFaction = "Wolf 406 Transport & Co";
 
 var selectBox = d3.select("#js_faction");
-console.log(selectBox);
-selectBox.attr("onChange", "setFaction(this.options[this.selectedIndex].value);");
+/*selectBox = document.getElementById("js_faction");*/
+/*selectBox.onchange = "setFaction(this.options[this.selectedIndex].value);"*/
+/*selectBox.attr("onChange", "setFaction(this.options[this.selectedIndex].value);");*/
 
 // Add our chart to the document body
 var svg = d3.select("#map").append("svg")
@@ -121,7 +122,7 @@ var pop_logscale = d3.scale.log()
 var statecolors = {
     "War": "red",
     "Civil War": "crimson",
-    "Elections": "lightcoral",
+    "Election": "lightcoral",
     "Lockdown": "#202020",
     "Civil Unrest": "#404040",
     "Outbreak": "gold",
@@ -141,24 +142,26 @@ var dangerscale = d3.scale.linear()
     .domain([0,1,5,10,70])
     .range(["darkred", "red", "orange", "gold", "green"]);
 
-createMap();
+createMap(selectedFaction);
 
 function createMap(selectedFaction){
-    d3.json("tracker_data.json", function(error, mapdata) {
+    var str;
+    str = selectedFaction.replace(/ /g, "+");
+    str = str.replace(/&/g, "%26");
+    d3.json("/aedc?in_page=100&in_select0=" + str, function(error, mapdata) {
+        
     //build the URL to the right faction: base URL + faction, with white spaces replaced with '+'
     //d3.json(t_baseURL + selectedFaction.replace(/ /g, "+"), function(error, mapdata) {
-        
         
         //clear anything already there
         svg.selectAll(".system").remove();
 
-        //console.log(mapdata);
         _mapdata = mapdata;
         mapdata = mapdata.systems;
         
         x_scale.domain([d3.min(mapdata, function(d){  return +d.x; }), d3.max(mapdata, function(d){  return +d.x; })]);
 
-        y_scale.domain([d3.min(mapdata, function(d){  return +d.z; }), d3.max(mapdata, function(d){  return +d.z; })]);
+        y_scale.domain([d3.min(mapdata, function(d){  return +d.y; }), d3.max(mapdata, function(d){  return +d.y; })]);
 
         var systems = svg.selectAll("system")
          .data(mapdata);
@@ -168,7 +171,7 @@ function createMap(selectedFaction){
             .append("g")
             .attr("class", "system")
             .attr("id", function(d){ return "_" + d.name.replace(/ /g, "_"); })
-            .attr("transform", function(d){ return "translate(" + x_scale(+d.x) + "," + y_scale(+d.z) +  ")"} );
+            .attr("transform", function(d){ return "translate(" + x_scale(+d.x) + "," + y_scale(+d.y) +  ")"} );
 
         // create the state rings: should be drawn first to be below the main star circle
         // opacity = 0, initially
@@ -341,7 +344,7 @@ function updateMap(view){
             // states
             case MAP_STATES:
                 // fill increasing outer rings with states info
-                fillStateRings(svg, mapdata.systems);
+                fillStateRings(svg, mapdata.systems, selectedFaction);
                 // fill main star systems
                 svg.select(".star")
                     .style("stroke", "#E0E0E0")
@@ -527,10 +530,14 @@ function selectedFactionStateColor(data, faction){
     return statecolors[state];
 }
 
-function fillStateRings(svg, data){
+function fillStateRings(svg, data, faction){
     data.forEach(function(system){
-        var paintfactionstates = system.factions.filter(function(state){
-            return state.state !== "None"
+        var factionstates = system.factions.filter(function(state){
+            return state.state !== "None";
+        });
+        
+        var paintfactionstates = factionstates.filter(function(d){
+            return d.faction !== faction;
         });
  
         // sort in the right order
