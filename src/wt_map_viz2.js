@@ -171,6 +171,9 @@ function createMap(selectedFaction){
             .append("g")
             .attr("class", "system")
             .attr("id", function(d){ return "_" + d.name.replace(/ /g, "_"); })
+			.on("mouseover", function(){
+                this.parentNode.appendChild(this);
+            })
             .attr("transform", function(d){ return "translate(" + x_scale(+d.x) + "," + y_scale(+d.y) +  ")"} );
 
         // create the state rings: should be drawn first to be below the main star circle
