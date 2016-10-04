@@ -4,6 +4,11 @@
 
 This code provides visualizations of multi-systems factions in Elite:Dangerous, given a list of systems with coordinates, population size; influence and state data. This code uses sample file, but has the code for URL-based data retrieval included (see below)
 
+Recent additions:
+- data table where relevant: space for 32 systems at the moment; extension is trivial; states map does some error checking
+- highlights in the data table for bold < 5.0, and bold-red < 2.5
+- changed influence color scale to make it a bit easier to understand
+
 ### Examples
 
 1. Control Map: which systems does the faction in question control

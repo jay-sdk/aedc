@@ -4,10 +4,10 @@
 var margin = {
     top: 80,
     right: 180,
-    bottom: 40,
+    bottom: 185,
     left: 60
 }, width = 800 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+    height = 750 - margin.top - margin.bottom;
 
 var MAP_DEFAULT = "control";
 var MAP_POPULATION = "population";
@@ -20,6 +20,7 @@ var mapview = MAP_DEFAULT;
 var t_baseURL = ""; // http://aedc.etc.
 //default; update from tracker faction dropdown onChange
 var selectedFaction = "Wolf 406 Transport & Co";
+//var selectedFaction = "LHS 2541 Alliance Combine";
 
 var selectBox = d3.select("#js_faction");
 /*selectBox = document.getElementById("js_faction");*/
@@ -41,7 +42,17 @@ svg.append("rect")
 //add a placeholder for the legend: content will change from view to view
 svg.append("g")
     .attr("class", "legend")
-    .attr("transform", "translate(" + (width + margin.left + 20) + "," + (height/2 + margin.top) + ")");
+    .attr("transform", "translate(" + (width + margin.left + 20) + "," + (height/2 + margin.top/2) + ")");
+
+var descr = svg.append("g")
+    .attr("class", "map_description")
+    .attr("transform", "translate(" + (margin.left) + "," + (height + margin.top + 20) + ")");
+descr.append("rect")
+        .attr("width", width + (margin.right/2))
+        .attr("height", 1.5)
+        .style("fill", "#0E6D74");
+descr.append("g")
+        .attr("class", "map_description_content");
 
 //buttons
 var buttons = svg.append("g")
@@ -156,6 +167,7 @@ function createMap(selectedFaction){
         //clear anything already there
         svg.selectAll(".system").remove();
 
+        //console.log(mapdata);
         _mapdata = mapdata;
         mapdata = mapdata.systems;
         
@@ -171,11 +183,11 @@ function createMap(selectedFaction){
             .append("g")
             .attr("class", "system")
             .attr("id", function(d){ return "_" + d.name.replace(/ /g, "_"); })
-			.on("mouseover", function(){
-                this.parentNode.appendChild(this);
-            })
+            //.on("mouseover", function(){
+            //    this.parentNode.appendChild(this);
+            //})
             .attr("transform", function(d){ return "translate(" + x_scale(+d.x) + "," + y_scale(+d.y) +  ")"} );
-
+        
         // create the state rings: should be drawn first to be below the main star circle
         // opacity = 0, initially
         for(var i=8; i > 0; i--){
@@ -245,6 +257,9 @@ function updateMap(view){
     var legend = legend.append("g")
         .attr("transform", "translate(50,20)");
     
+    var desc = svg.selectAll(".map_description_content");
+    desc.selectAll("*").remove();
+    
     svg = svg.selectAll(".system")
     
     mapdata = _mapdata;
@@ -297,7 +312,24 @@ function updateMap(view){
                     .style("stroke", function(d){ 
                         return (selectedFactionIsRuler(d.factions, selectedFaction) === "Y" ? "green" : "maroon"); })
                     .style("fill", function(d){ return inf_scale(factionInfluence(d.factions, selectedFaction)); });
-
+                
+                //description content
+                var infdata = [];
+                mapdata.systems.forEach(function(d){
+                    var inf = 0;
+                    var sysinf = {name:  d.name ,value:  factionInfluence(d.factions, selectedFaction).toFixed(1)};
+                    infdata.push(sysinf);
+                });
+                
+                if(infdata.length > 20){
+                    setDescription(desc,infdata, 8, 190, 160, "end");
+                }else{
+                    setDescription(desc,infdata, 5, 190, 160, "end");
+                }
+                
+                
+                
+                //legend
                 for(i=0; i< 21; i++){
                     legend.append("rect")
                         .attr("y", i * 3)
@@ -352,8 +384,72 @@ function updateMap(view){
                 svg.select(".star")
                     .style("stroke", "#E0E0E0")
                     .style("fill", function(d){ return selectedFactionStateColor(d.factions, selectedFaction); });
-
-
+                
+                
+                var activestate = [];
+                mapdata.systems.forEach(function(elem){
+                    var statesys = elem.name;
+                    var sysfacs = elem.factions;
+                    sysfacs.forEach(function(f){
+                        if(f.faction === selectedFaction){
+                            if(activestate.indexOf(f.state)=== -1){
+                                activestate.push({system: statesys, state: f.state});
+                            }
+                        }
+                    })
+                    
+                });
+                console.log(activestate);
+                var conflictstate = activestate.filter(function(d){
+                    //console.log(d);
+                    return ["War", "Civil War", "Election"].indexOf(d.state) !== -1;
+                });
+                //console.log(conflictstate);
+                
+                var factstate = activestate.filter(function(d){
+                    //console.log(d);
+                    return ["War", "Civil War", "Election"].indexOf(d.state) === -1;
+                });
+                //console.log(factstate);
+                
+                //little logic to handle multiple non-conflict states in case data has not been updated fully
+                var lookup = {};
+                for(var item, i=0; item = factstate[i++];){
+                    var state = item.state;
+                    
+                    if(!(state in lookup)){
+                        lookup[state] = 1;
+                    } else {
+                        lookup[state] = lookup[state] + 1;
+                    }
+                }
+                //console.log(lookup);
+                var factdesc = [];
+                var statemsg = "";
+                var nonconfstates = Object.keys(lookup);
+                if(nonconfstates.length > 1){
+                    var _msg = [];
+                    for(var i=0; i<nonconfstates.length; i++){
+                        _msg.push(nonconfstates[i] + " (" + lookup[nonconfstates[i]] + ")");
+                    }
+                    _msg.push("Check tracker whether all data has been updated (correctly). There should be only one state");
+                    statemsg = _msg.join(", ")
+                }else{
+                    statemsg = nonconfstates[0];
+                }
+                var factstatemsg = {name: "Active Faction State:", value: statemsg};
+                factdesc.push(factstatemsg);
+                //war state, if any
+                if(conflictstate.length === 1){
+                    statemsg = conflictstate[0].state + " in " + conflictstate[0].system;    
+                }
+                if(conflictstate.length > 1){
+                    _statemsg = "Likely data error. Multiple conflicts recorded";
+                }
+                factstatemsg = {name: "Active Conflict:", value: statemsg};
+                factdesc.push(factstatemsg)
+                setDescription(desc,factdesc, 5, 190, 120, "start");
+                
                 for(var i = 0; i < stateorder.length; i++){
                     legend.append("rect")
                         .attr("y", i * 12)
@@ -372,8 +468,6 @@ function updateMap(view){
 
                 title.text("Active States in " + selectedFaction + " Systems");
 
-
-
                 break;
 
             case MAP_DANGERSPOT:
@@ -381,6 +475,20 @@ function updateMap(view){
                     .style("stroke", function(d){ 
                         return (selectedFactionIsRuler(d.factions, selectedFaction) === "Y" ? "green" : "maroon"); })
                     .style("fill", function(d){ return dangerscale(calculateMargin(d.factions, selectedFaction)); });
+                
+                //description content
+                var margindata = [];
+                mapdata.systems.forEach(function(d){
+                    var inf = 0;
+                    var sysmargin = {name:  d.name ,value:  (calculateMargin(d.factions, selectedFaction)).toFixed(1)};
+                    margindata.push(sysmargin);
+                });
+                
+                if(margindata.length > 20){
+                    setDescription(desc,margindata, 8, 190, 160, "end");
+                }else{
+                    setDescription(desc,margindata, 5, 190, 160, "end");
+                }
 
                 for(i=0; i< 21; i++){
                     legend.append("rect")
@@ -438,6 +546,29 @@ function updateMap(view){
                     .style("stroke", "#0E6D74")
                     .style("fill", function(d){ 
                         return (selectedFactionIsRuler(d.factions, selectedFaction) === "Y" ? "#0E6D74" :         "white"); });
+                
+                //description content
+                var popdata = [];
+                mapdata.systems.forEach(function(d){
+                    var popshort = "";
+                    if(d.population > 1000000000){
+                        popshort = (d.population/1000000000).toFixed(2) + "B";
+                    }else if(d.population > 1000000){
+                        popshort = (d.population/1000000).toFixed(2) + "M";
+                    }else{
+                        popshort = (d.population/1000).toFixed(2) + "K";
+                    }
+                    console.log(popshort);
+                    var syspop = {name:  d.name ,value:  popshort};
+                    popdata.push(syspop);
+                });
+                
+                if(popdata.length > 20){
+                    setDescription(desc,popdata, 8, 190, 160, "end");
+                }else{
+                    setDescription(desc,popdata, 5, 190, 160, "end");
+                }
+                
 
                 //legend
                 legend.append("circle")
@@ -483,6 +614,21 @@ function updateMap(view){
                     .attr("text-anchor", "middle")
                     .text("10,000,000")
                     .style("font-size", "10px");
+                
+                legend.append("circle")
+                    .attr("cx", 20)
+                    .attr("cy", 225)
+                    .attr("r", pop_logscale(1000000000))
+                    .style("stroke", "#0E6D74")
+                    .style("fill", "#0E6D74")
+                    .style("opacity", 0.4);
+
+                legend.append("text")
+                    .attr("x", 20)
+                    .attr("y", 227)
+                    .attr("text-anchor", "middle")
+                    .text("1,000,000,000")
+                    .style("font-size", "10px");
 
                 title.text("Population sizes for " + selectedFaction + " Systems");
                 break;
@@ -519,18 +665,8 @@ function factionInfluence(data, faction){
 }
 
 function selectedFactionStateColor(data, faction){
-    var state = "None";
-    try{
-        data.some(function (d){ 
-            if(d.faction === faction){ 
-                console.log(d.state);
-                state = d.state}});
-    }catch(e){
-        if(e.name !== "TypeError"){
-            throw e;
-        }
-    }
-    return statecolors[state];
+    
+    return statecolors[getFactionState(data, faction)];
 }
 
 function fillStateRings(svg, data, faction){
@@ -561,7 +697,6 @@ function fillStateRings(svg, data, faction){
 }
 
 function calculateMargin(data, faction){
-    //console.log(data);
     var factioninf = factionInfluence(data, faction);
     var closestmargin = 100;
     var otherfactions = data.filter(function(d){
@@ -581,4 +716,57 @@ function setFaction(elem){
     selectedFaction = elem;
     createMap(selectedFaction);
 }
+
+function setDescription(svg, dataobj, elempercol, xoffset, xcol2offset, anchor){
+    var item_counter = 0;
+    var x = 0;
+    var y = 20;
+    dataobj.forEach(function(elem){
+        svg.append("text")
+            .attr("x", x)
+            .attr("y", y)
+            .text(elem.name)
+            .style("font-weight", function(f){
+                return (elem.value < 5) ? "bold" : "normal";
+            })
+            .style("fill", function(f){
+                return (elem.value < 2.5) ? "red" : "";
+            });
+        svg.append("text")
+            .attr("x", x + xcol2offset)
+            .attr("y", y)
+            .attr("text-anchor", anchor)
+            .text(elem.value)
+            .style("font-weight", function(f){
+                return (elem.value < 5) ? "bold" : "normal";
+            })
+            .style("fill", function(f){
+                return (elem.value < 2.5) ? "red" : "";
+            });
+        item_counter++;
+        y = y + 20;
+        if(item_counter%elempercol === 0){
+            x = x + xoffset;
+            y=20;
+        }
+    });
     
+}
+
+function getFactionState(data, faction){
+    var state = "None";
+    try{
+        data.some(function (d){ 
+            if(d.faction === faction){ 
+                state = d.state}});
+    }catch(e){
+        if(e.name !== "TypeError"){
+            throw e;
+        }
+    }
+    return state;
+    
+}
+
+
+ 
