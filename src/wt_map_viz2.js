@@ -94,6 +94,7 @@ for(var i =0; i < mapbuttons.length; i++){
         .attr("y", (i * 35) + 17)
         .attr("text-anchor", "middle")
         .text(mapbuttons[i].text)
+		.attr("onclick", mapbuttons[i].callback)
         .style("font-size", "12px")
         .style("font-weight", "bold")
         .style("fill", "#0E6D74")
