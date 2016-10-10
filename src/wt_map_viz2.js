@@ -123,9 +123,10 @@ var y_scale = d3.scale.linear()
     .range([height-20, 0]);
 
 //used as a color gradient for influence visualization
+//used as a color gradient for influence visualization
 var inf_scale = d3.scale.linear()
-    .domain([4,40,90])
-    .range(["red", "green", "lime"]);
+    .domain([0, 2.5, 10, 20, 40, 60, 75, 100])
+    .range(["red", "red", "orange", "gold", "green", "lime", "dodgerblue", "dodgerblue"]);
 
 var pop_logscale = d3.scale.log()
     .domain([1000,1000000000000])
@@ -151,8 +152,8 @@ var stateorder = Object.keys(statecolors);
 var _mapdata = {};
 
 var dangerscale = d3.scale.linear()
-    .domain([0,1,5,10,70])
-    .range(["darkred", "red", "orange", "gold", "green"]);
+    .domain([0,2,5,10,70])
+    .range(["purple", "red", "orange", "gold", "green"]);
 
 createMap(selectedFaction);
 
@@ -336,14 +337,14 @@ function updateMap(view){
                         .attr("y", i * 3)
                         .attr("height", 3)
                         .attr("width", 10)
-                        .style("fill", inf_scale(i * 5));
+                        .style("fill", inf_scale(i * 4));
                 }
                 for(i = 0; i < 3; i++){
                     legend.append("text")
                         .attr("x", 15)
                         .attr("y", (i * 30) + 4)
                         .attr("text-anchor", "start")
-                        .text((i * 50) + "%" )
+                        .text((i * 40) + "%" )
                         .style("font-size", "10px");
                 }
                 legend.append("circle")
@@ -433,7 +434,7 @@ function updateMap(view){
                     for(var i=0; i<nonconfstates.length; i++){
                         _msg.push(nonconfstates[i] + " (" + lookup[nonconfstates[i]] + ")");
                     }
-                    _msg.push("Check tracker whether all data has been updated (correctly). There should be only one state");
+                    _msg.push("Check tracker whether all systems have been updated.");
                     statemsg = _msg.join(", ")
                 }else{
                     statemsg = nonconfstates[0];
@@ -445,12 +446,13 @@ function updateMap(view){
                     statemsg = conflictstate[0].state + " in " + conflictstate[0].system;    
                 }
                 if(conflictstate.length > 1){
-                    _statemsg = "Likely data error. Multiple conflicts recorded";
+                    statemsg = "Likely data error. Multiple conflicts recorded";
                 }
-                factstatemsg = {name: "Active Conflict:", value: statemsg};
-                factdesc.push(factstatemsg)
-                setDescription(desc,factdesc, 5, 190, 120, "start");
-                
+                if(conflictstate.length > 0){
+                    factstatemsg = {name: "Active Conflict:", value: statemsg};
+                    factdesc.push(factstatemsg)
+                    setDescription(desc,factdesc, 5, 190, 120, "start");
+                }
                 for(var i = 0; i < stateorder.length; i++){
                     legend.append("rect")
                         .attr("y", i * 12)
@@ -728,10 +730,23 @@ function setDescription(svg, dataobj, elempercol, xoffset, xcol2offset, anchor){
             .attr("y", y)
             .text(elem.name)
             .style("font-weight", function(f){
-                return (elem.value < 5) ? "bold" : "normal";
+                var ret = "normal";
+                if (elem.value < 5){
+                    ret = "bold";
+                } else if(elem.value >= 75.0 && elem.value < 100.0){
+                    ret = "bold";
+                }
+                return ret;
+                
             })
             .style("fill", function(f){
-                return (elem.value < 2.5) ? "red" : "";
+                var ret = "";
+                if(elem.value < 2.5){
+                    ret = "red";
+                }else if(elem.value >= 75.0 && elem.value < 100.0){
+                    ret = "dodgerblue";
+                }
+                return ret;
             });
         svg.append("text")
             .attr("x", x + xcol2offset)
@@ -739,10 +754,23 @@ function setDescription(svg, dataobj, elempercol, xoffset, xcol2offset, anchor){
             .attr("text-anchor", anchor)
             .text(elem.value)
             .style("font-weight", function(f){
-                return (elem.value < 5) ? "bold" : "normal";
+                var ret = "normal";
+                if (elem.value < 5){
+                    ret = "bold";
+                } else if(elem.value >= 75.0 && elem.value < 100.0){
+                    ret = "bold";
+                }
+                return ret;
+                
             })
             .style("fill", function(f){
-                return (elem.value < 2.5) ? "red" : "";
+                var ret = "";
+                if(elem.value < 2.5){
+                    ret = "red";
+                }else if(elem.value >= 75.0 && elem.value < 100.0){
+                    ret = "dodgerblue";
+                }
+                return ret;
             });
         item_counter++;
         y = y + 20;
